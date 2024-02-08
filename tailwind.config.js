@@ -25,6 +25,11 @@ module.exports = {
       'east-side': '#b9a5d2',
       'silver-chalice': '#a5a5a5',
       'scorpion': '#5a5a5a', // font-color Light Mode
+      'dark-blue':'#527bd2',
+      'semi-blue':'#5295d2',
+      'mid-blue':'#52b5d2',
+      'aqua-blue':'#54d6c6',
+      'light-blue':'#62e7b5',
     },
     container: {
       center: true,

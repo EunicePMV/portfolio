@@ -1,5 +1,7 @@
-import { NavigationMenu, navigationMenuTriggerStyle, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuIndicator, NavigationMenuViewport } from "./components/ui/navigation-menu"
-// import "@fontsource/rubik/300.css"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./components/ui/navigation-menu"
+import profile from "./assets/images/portfolioProfile.png"
+import womanMage from "./assets/images/woman-mage.png"
+import wand from "./assets/images/wand.png"
 
 function App() {
 
@@ -42,39 +44,65 @@ function App() {
         </NavigationMenuList>
       </NavigationMenu>
       <section id="about" className="mt-10 mb-16">
-        <div className="flex mx-52 p-10">
-          <div className="w-1/2 font-rubik">
+        <div className="flex mx-52 mb-20 p-10">
+          <div className="w-1/2 font-rubik m-auto mr-16">
             <h1 className="font-outfit font-black text-[2rem] text-scorpion">
               Developer's Tale.
             </h1>
-            <h4 className="text-scorpion/75 font-normal mb-3">
+            <h4 className="text-scorpion font-normal mb-3">
               actively crafting and nurturing growth
             </h4>
-            <h6 className="text-scorpion/50 font-thin text-justify mt-10">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas culpa officia temporibus beatae facere et. Quasi, facere. Fuga, eligendi fugiat.
+            <h6 className="text-scorpion/75 font-extralight text-justify mt-12">
+              I'm Eunice Patricia M. Villanueva, an aspirant developer and &#8211; a Growth Crafter.
+              Driven by my passion and motivation to create positive impact in my community, 
+              I trained myself to become an efficient problem-solver.
             </h6>
           </div>
           <div className="w-1/2">
-            *Insert picture here
-          </div>
-        </div>
-        <div className="py-10 w-full bg-aero-blue">
-          <div className="h-[25px]">
-            🧙🏾
-          </div>
-          <div>
-            all about me
+            <img src={profile} alt="EunicePMV Profile" className="rounded-full h-[350px] w-[350px]"/>
           </div>
         </div>
       </section>
+      {/* place tecwands overlapping the about  */}
+      <section id="sub-about">
+        <div className="px-[248px] pt-10 pb-40 w-full bg-mid-blue text-center">
+          <div className="flex justify-center mb-5">
+            <img src={womanMage} alt="Female Mage"/>
+          </div>
+          <div className="font-rubik text-white px-28">
+            As a Growth Crafter, I utilized my knowledge and tech stack to innovate
+            and create solution for the benefit of my community towards better living. Let's
+            connect and collaborate, focused on improving the quality of life through technological
+            innovation.
+          </div>
+        </div>
+        <div id="tech-stack" className="mx-[260px] p-8 border-1 border-scorpion rounded-md shadow-[0_0_10px_rgba(0,0,0,.09)]">
+          <div className="flex">
+            <div className="font-outfit font-black text-[2rem] text-scorpion mr-2">
+              TechWands 
+            </div>
+            <div className="block my-auto">
+              <img src={wand} alt="Magic Wand" className="h-8 w-8"/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <section id="tech-stack" className="mx-[260px] p-8 border-1 border-scorpion rounded-md shadow-[0_0_10px_rgba(0,0,0,.09)]">
+        <div className="flex">
+          <div className="font-outfit font-black text-[2rem] text-scorpion mr-2">
+            TechWands 
+          </div>
+          <div className="block my-auto">
+            <img src={wand} alt="Magic Wand" className="h-8 w-8"/>
+          </div>
+        </div>
+      </section> */}
       <section>
-        TechWands
+        Projects
       </section>
       <div>
-        Projects
-      </div>
-      <div>
-        Blog
+        Blog justify-center
       </div>
       <div>
         Contacts
