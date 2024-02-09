@@ -192,8 +192,12 @@ function App() {
           actively crafting and nurturing growth
         </h4>
         <div className="flex gap-3 justify-center mb-11">
-          <img src={linkedin} alt="LinkedIn Logo" className="h-[25px] w-[25px]"/>
-          <img src={githubContact} alt="Github Logo" className="h-[25px] w-[25px]"/>
+          <a href="https://www.linkedin.com/in/eunicepmv/">
+            <img src={linkedin} alt="LinkedIn Logo" className="h-[25px] w-[25px]"/>
+          </a>
+          <a href="https://github.com/EunicePMV">
+            <img src={githubContact} alt="Github Logo" className="h-[25px] w-[25px]"/>
+          </a>
         </div>
         <div className="font-rubik text-sm text-white">
           EunicePMV © 2024
