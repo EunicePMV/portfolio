@@ -1,4 +1,7 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./components/ui/navigation-menu"
+import { Hamburger } from "./components/hamburger/Hamburger"
+import { useState } from "react"
+
 import profile from "./assets/images/portfolioProfile.png"
 import womanMage from "./assets/images/woman-mage.png"
 import wand from "./assets/images/wand.png"
@@ -28,30 +31,46 @@ import loading from "./assets/images/loading.gif"
 import linkedin from "./assets/images/linkedin.png"
 import githubContact from "./assets/images/github-contact.png"
 
+import gcLogoDark from "./assets/images/gc-logoDark.png"
+import gcLogoLight from "./assets/images/gc-logo-aqua.png"
+
 function App() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // STOP HERE: NAVIGATION
+  const handleNavigate = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleMenuToggle = () => {
+    setIsOpen(!isOpen)
+    console.log(isOpen);
+    // Handle menu open/close logic here
+  };
 
   return (
     <>
-      <NavigationMenu className="px-[248px] py-[20px]  w-full justify-between shadow-[0_0_10px_rgba(0,0,0,.09)] text-scorpion">
+      <NavigationMenu className="px-16 xl:min-[1128px]:px-[248px] py-[20px]  w-full justify-between md:justify-between shadow-[0_0_10px_rgba(0,0,0,.09)] text-scorpion">
         <NavigationMenuList className="font-outfit text-xl font-bold">
           <NavigationMenuItem>
             <NavigationMenuLink>
-              GrowthCrafter
+              <img src={gcLogoDark} alt="GrowthCrafter Logo Dark" className="h-[35px] w-[35px]"/>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
         <NavigationMenuList className="font-outfit text-sm gap-3 font-medium"> 
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out">
-            <NavigationMenuLink>
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
+            <button>
               Tale
-            </NavigationMenuLink>
+            </button>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out">
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
             <NavigationMenuLink>
               TechWands
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out">
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
             <NavigationMenuLink>
               Projects
             </NavigationMenuLink>
@@ -62,36 +81,67 @@ function App() {
               Blog
             </NavigationMenuLink>
           </NavigationMenuItem> */}
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out">
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
             <NavigationMenuLink>
               Contacts
             </NavigationMenuLink>
           </NavigationMenuItem>
+          <NavigationMenuItem className="visible md:hidden">
+            <NavigationMenuLink>
+              <Hamburger onClick={handleMenuToggle} />
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <section id="about" className="mt-10 mb-16">
-        <div className="flex mx-52 mb-20 p-10">
-          <div className="w-1/2 font-rubik m-auto">
-            <h1 className="font-outfit font-black text-[2rem] text-scorpion">
+      { isOpen && 
+        <NavigationMenu className="px-16 xl:min-[1128px]:px-[248px] py-[20px] text-scorpion flex justify-center w-full mx-auto">
+          <NavigationMenuList className="flex flex-col gap-2 w-full">
+            <NavigationMenuItem className="mx-auto">
+              <NavigationMenuLink>
+                Tale
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink>
+                TechWands
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink>
+                Projects
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink>
+                Contacts
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      }
+      <section id="tale" className="mt-10 mb-16">
+        <div className="flex mx-16 xl:min-[1128px]:mx-52 mb-20 xl:min-[1128px]:p-10 xl:min-[1128px]:flex-row flex-col-reverse">
+          <div className="font-rubik xl:min-[1128px]:m-auto xl:min-[1128px]:w-1/2 w-full mt-8">
+            <h1 className="font-outfit font-black text-[2rem] text-scorpion xl:min-[1128px]:text-left text-center">
               Developer's Tale.
             </h1>
-            <h6 className="text-scorpion/75 font-extralight text-justify mt-12">
+            <h6 className="text-scorpion/75 font-extralight xl:min-[1128px]:text-justify text-center mt-12">
               I'm Eunice Patricia M. Villanueva, an aspirant developer and &#8211; a Growth Crafter.
               Driven by my passion and motivation to create positive impact in my community, 
               I trained myself to become an efficient problem-solver.
             </h6>
           </div>
-          <div className="w-1/2 flex justify-end">
-            <img src={profile} alt="EunicePMV Profile" className="rounded-full h-[350px] w-[350px]"/>
+          <div className="w-1/2 xl:min-[1128px]:flex xl:min-[1128px]:justify-end justify-center block mx-auto">
+            <img src={profile} alt="EunicePMV Profile" className="rounded-full md:max-w-[700px] md:max-h-[300px] xl:max-w-[1200px] xl:max-h-[350px] block mx-auto"/>
           </div>
         </div>
       </section>
       <section id="sub-about">
-        <div className="px-[248px] py-10 w-full bg-aqua-blue text-center">
+        <div className="px-16 xl:min-[1128px]:px-[248px] py-10 w-full bg-aqua-blue text-center">
           <div className="flex justify-center mb-5">
             <img src={womanMage} alt="Female Mage"/>
           </div>
-          <div className="font-rubik text-white px-28">
+          <div className="font-rubik text-white xl:min-[1128px]:px-28">
             As a Growth Crafter, I utilized my knowledge and tech stack to innovate
             and create solution for the benefit of my community towards better living. Let's
             connect and collaborate, focused on improving the quality of life through technological
@@ -99,9 +149,9 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="h-[150px] bg-aqua-blue mb-72 flex justify-center text-center">
+      <section id="techwands" className="h-[150px] bg-aqua-blue mb-72 flex justify-center text-center">
         <div className="max-h-max">
-          <div id="tech-stack" className="mx-[248px] p-8 border-1 border-scorpion rounded-md shadow-[0_0_10px_rgba(0,0,0,.09)] bg-white">
+          <div id="tech-stack" className="xl:min-[1128px]:mx-[248px] p-8 border-1 border-scorpion rounded-md shadow-[0_0_10px_rgba(0,0,0,.09)] bg-white">
             <div className="flex justify-center">
               <h1 className="font-outfit font-black text-[2rem] text-scorpion mr-2">
                 TechWands 
@@ -152,8 +202,8 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="mt-10 mb-96">
-        <div className="mx-52 mb-20 p-10">
+      <section id="projects" className="mt-10 mb-96">
+        <div className="xl:max-[1128px]:mx-52 mb-20 p-10">
           <h1 className="font-outfit font-black text-[2rem] text-scorpion text-center">
             Projects
             <div className="border-b-8 border-solid border-scorpion/50 block m-auto w-[70px]">
@@ -184,8 +234,9 @@ function App() {
           </div> */}
         </div>
       </section>
-      <footer className="relative bottom-0 bg-aqua-blue w-full text-center p-6">
-        <h3 className="font-outfit text-lg text-white font-bold">
+      <footer id="contacts" className="relative bottom-0 bg-aqua-blue w-full text-center p-16">
+        <img src={gcLogoLight} alt="GrowthCrafter Logo" className="h-[50px] w-[50px] mx-auto"/>
+        <h3 className="font-outfit text-lg text-white font-bold mb-10">
           GrowthCrafter
         </h3>
         <h4 className="font-outfit text-base text-white font-normal mb-10">
