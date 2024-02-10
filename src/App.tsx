@@ -1,6 +1,6 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./components/ui/navigation-menu"
 import { Hamburger } from "./components/hamburger/Hamburger"
-import { useState } from "react"
+import { useState, useRef, RefObject } from "react"
 
 import profile from "./assets/images/portfolioProfile.png"
 import womanMage from "./assets/images/woman-mage.png"
@@ -36,13 +36,16 @@ import gcLogoLight from "./assets/images/gc-logo-aqua.png"
 
 function App() {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const tale = useRef<HTMLDivElement>(null)
+  const techWands = useRef<HTMLDivElement>(null)
+  const projects = useRef<HTMLDivElement>(null)
+  const contacts = useRef<HTMLDivElement>(null)
 
-  // STOP HERE: NAVIGATION
-  const handleNavigate = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigate = (sectionId : RefObject<HTMLDivElement>) => {
+    sectionId.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const [isOpen, setIsOpen] = useState(false);
   const handleMenuToggle = () => {
     setIsOpen(!isOpen)
     console.log(isOpen);
@@ -60,18 +63,18 @@ function App() {
           </NavigationMenuItem>
         </NavigationMenuList>
         <NavigationMenuList className="font-outfit text-sm gap-3 font-medium"> 
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
-            <button>
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out hidden md:block">
+            <NavigationMenuLink onClick={() => handleNavigate(tale)}>
               Tale
-            </button>
+            </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
-            <NavigationMenuLink>
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out hidden md:block">
+            <NavigationMenuLink onClick={() => handleNavigate(techWands)}>
               TechWands
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
-            <NavigationMenuLink>
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out hidden md:block">
+            <NavigationMenuLink onClick={() => handleNavigate(projects)}>
               Projects
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -81,8 +84,8 @@ function App() {
               Blog
             </NavigationMenuLink>
           </NavigationMenuItem> */}
-          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out invisible md:visible">
-            <NavigationMenuLink>
+          <NavigationMenuItem className="hover:text-scorpion/50 cursor-pointer transition-all duration-200 ease-in-out hidden md:block">
+            <NavigationMenuLink onClick={() => handleNavigate(contacts)}>
               Contacts
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -97,29 +100,29 @@ function App() {
         <NavigationMenu className="px-16 xl:min-[1128px]:px-[248px] py-[20px] text-scorpion flex justify-center w-full mx-auto">
           <NavigationMenuList className="flex flex-col gap-2 w-full">
             <NavigationMenuItem className="mx-auto">
-              <NavigationMenuLink>
+              <NavigationMenuLink onClick={() => handleNavigate(tale)}>
                 Tale
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink>
+              <NavigationMenuLink onClick={() => handleNavigate(techWands)}>
                 TechWands
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink>
+              <NavigationMenuLink onClick={() => handleNavigate(projects)}>
                 Projects
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink>
+              <NavigationMenuLink onClick={() => handleNavigate(contacts)}>
                 Contacts
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       }
-      <section id="tale" className="mt-10 mb-16">
+      <section ref={tale} id="tale" className="mt-10 mb-16">
         <div className="flex mx-16 xl:min-[1128px]:mx-52 mb-20 xl:min-[1128px]:p-10 xl:min-[1128px]:flex-row flex-col-reverse">
           <div className="font-rubik xl:min-[1128px]:m-auto xl:min-[1128px]:w-1/2 w-full mt-8">
             <h1 className="font-outfit font-black text-[2rem] text-scorpion xl:min-[1128px]:text-left text-center">
@@ -149,7 +152,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section id="techwands" className="h-[150px] bg-aqua-blue mb-72 flex justify-center text-center">
+      <section ref={techWands} id="techwands" className="h-[150px] bg-aqua-blue mb-72 flex justify-center text-center">
         <div className="max-h-max">
           <div id="tech-stack" className="xl:min-[1128px]:mx-[248px] p-8 border-1 border-scorpion rounded-md shadow-[0_0_10px_rgba(0,0,0,.09)] bg-white">
             <div className="flex justify-center">
@@ -202,7 +205,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section id="projects" className="mt-10 mb-96">
+      <section ref={projects} id="projects" className="mt-10 mb-96">
         <div className="xl:max-[1128px]:mx-52 mb-20 p-10">
           <h1 className="font-outfit font-black text-[2rem] text-scorpion text-center">
             Projects
@@ -234,7 +237,7 @@ function App() {
           </div> */}
         </div>
       </section>
-      <footer id="contacts" className="relative bottom-0 bg-aqua-blue w-full text-center p-16">
+      <footer ref={contacts} id="contacts" className="relative bottom-0 bg-aqua-blue w-full text-center p-16">
         <img src={gcLogoLight} alt="GrowthCrafter Logo" className="h-[50px] w-[50px] mx-auto"/>
         <h3 className="font-outfit text-lg text-white font-bold mb-10">
           GrowthCrafter
@@ -242,13 +245,16 @@ function App() {
         <h4 className="font-outfit text-base text-white font-normal mb-10">
           actively crafting and nurturing growth
         </h4>
-        <div className="flex gap-3 justify-center mb-11">
+        <div className="flex gap-3 justify-center">
           <a href="https://www.linkedin.com/in/eunicepmv/">
             <img src={linkedin} alt="LinkedIn Logo" className="h-[25px] w-[25px]"/>
           </a>
           <a href="https://github.com/EunicePMV">
             <img src={githubContact} alt="Github Logo" className="h-[25px] w-[25px]"/>
           </a>
+        </div>
+        <div className="font-outfit text-sm text-white font-extralight mb-11">
+          Find and Contact Me Here 
         </div>
         <div className="font-rubik text-sm text-white">
           EunicePMV © 2024
