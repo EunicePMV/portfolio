@@ -30,6 +30,7 @@ module.exports = {
       'mid-blue':'#52b5d2',
       'aqua-blue':'#54d6c6',
       'light-blue':'#62e7b5',
+      'secondary-color': '#468F92',
     },
     container: {
       center: true,

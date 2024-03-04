@@ -34,6 +34,8 @@ import githubContact from "./assets/images/github-contact.png"
 import gcLogoDark from "./assets/images/gc-logoDark.png"
 import gcLogoLight from "./assets/images/gc-logo-aqua.png"
 
+import eSkwela from "./assets/images/e_skwela.png"
+
 function App() {
 
   const tale = useRef<HTMLDivElement>(null)
@@ -212,7 +214,7 @@ function App() {
             <div className="border-b-8 border-solid border-scorpion/50 block m-auto w-[70px]">
             </div>
           </h1>
-          <div className="mt-10">
+          {/* <div className="mt-10">
             <div className="flex justify-center">
               <h3 className="font-outfit font-black text-scorpion text-[1.25rem] text-center mr-2">
                 Deploying... 
@@ -222,19 +224,31 @@ function App() {
             <div className="flex justify-center mt-4">
               <img src={loading} alt="Loading GIF" className="h-[30px] w-[30px]"/>
             </div>
-          </div>
-          {/* FINAL FORMAT
-          <div className="grid grid-cols-3 mt-10">
-            <div className="h-[300px] bg-scorpion/50 border-solid border-2 border-black">
-              Project 1
-            </div>
-            <div className="h-[300px] bg-scorpion/50 border-solid border-2 border-black">
-              Project 2
-            </div>
-            <div className="h-[300px] bg-scorpion/50 border-solid border-2 border-black">
-              Project 3
-            </div>
           </div> */}
+          <div className="grid grid-cols-1 gap-8 mt-10 mx-auto sm:min-[641px]:px-28 sm:max-[932px]:px-28 md:min-[934px]:grid-cols-2 lg:min-[1360px]:grid-cols-3 lg:min-[1429px]:mx-5 2xl:min-[1725px]:mx-44">
+            <div className="h-[250px] rounded-md">
+            </div>
+            <div className="h-[250px] rounded-md bg-aqua-blue relative">
+              <figure className="w-full h-full">
+                <img src={eSkwela} alt="E-Skwela Logo" className="rounded-md hover:scale-100 ease-in-out h-full w-full"/>
+                <figcaption className="absolute top-0 px-6 flex justify-center flex-col text-white font-outfit h-full w-full text-center opacity-0 hover:opacity-100 z-1 bg-gradient-to-r from-aqua-blue to-secondary-color transition ease-in-out hover:transition-all rounded-md">
+                  <h1 className="mb-6 font-medium text-lg">
+                    Learning Management System for effective and accessible learning
+                  </h1>
+                  <div>
+                    <a href="https://eskwela-educweb.vercel.app/" className="border-2 border-white border-solid font-outfit font-light rounded-full hover:bg-aero-blue/40 cursor-pointer">
+                      <span className="text-sm m-3">
+                        Visit Website
+                      </span>
+                    </a>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+            {/* bg-scorpion/50 */}
+            <div className="h-[250px] rounded-md">
+            </div>
+          </div>
         </div>
       </section>
       <footer ref={contacts} id="contacts" className="relative bottom-0 bg-aqua-blue w-full text-center p-16">
