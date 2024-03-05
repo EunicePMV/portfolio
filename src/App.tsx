@@ -25,8 +25,8 @@ import vsCode from "./assets/images/vs-code.png"
 import mySql from "./assets/images/mysql.png"
 import figma from "./assets/images/figma.png"
 
-import wink from "./assets/images/wink.png"
-import loading from "./assets/images/loading.gif"
+// import wink from "./assets/images/wink.png"
+// import loading from "./assets/images/loading.gif"
 
 import linkedin from "./assets/images/linkedin.png"
 import githubContact from "./assets/images/github-contact.png"
